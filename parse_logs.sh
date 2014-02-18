@@ -5,15 +5,17 @@
 # PATHS
 logs_path="/var/www/htdocs/test/data/14"
 output_path="/var/www/htdocs/test/data"
-parsers_path="./parsers"
+parsers_path="$HOME/pg_audit/pg_audit/parsers"
 
 # Reads
 read_disk="sda"
 read_column="rkB/s"
+read_op="reads"
 
 # Writes
 write_disk="sda"
 write_column="wkB/s"
+write_op="writes"
 
 # Response Time and Service Time
 disk="sda"
@@ -27,6 +29,8 @@ wait_col="%iowait"
 
 ########## CONFIG ###########
 
+set -e
+set -x
 
 usage() {
     cat <<EOF
@@ -90,31 +94,31 @@ read_params() {
 }
 
 connections_LG() {
-    $parsers_path/connection_count.sh $logs_path $output_path
+    sh $parsers_path/connection_count.sh $logs_path $output_path
 }
 
 cpu_usage_LG() {
-    $parsers_path/cpu_usage.sh $logs_path $output_path $usr_col $sys_col $wait_col
+    sh $parsers_path/cpu_usage.sh $logs_path $output_path $usr_col $sys_col $wait_col
 }
 
 memory_used_LG() {
-    $parsers_path/memory_used.sh $logs_path $output_path
+    sh $parsers_path/memory_used.sh $logs_path $output_path
 }
 
 locks_LG() {
-    $parsers_path/locks.sh $logs_path $output_path
+    sh $parsers_path/locks.sh $logs_path $output_path
 }
 
 reads_LG() {
-    $parsers_path/reads_writes.sh $logs_path $output_path $read_disk $read_column
+    sh $parsers_path/reads_writes.sh $logs_path $output_path $read_disk $read_column $read_op
 }
 
 writes_LG() {
-    $parsers_path/reads_writes.sh $logs_path $output_path $write_disk $write_column
+    sh $parsers_path/reads_writes.sh $logs_path $output_path $write_disk $write_column $write_op
 }
 
 res_svc_LG() {
-    $parsers_path/response_wait.sh $logs_path $output_path $disk $res_col $svc_col
+    sh $parsers_path/response_wait.sh $logs_path $output_path $disk $res_col $svc_col
 }
 
 read_params "$@"
