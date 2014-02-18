@@ -3,7 +3,7 @@
 ########## CONFIG ###########
 
 # PATHS
-logs_path="/var/www/htdocs/test/data/14"
+logs_path="/var/www/htdocs/test/data/01/03"
 output_path="/var/www/htdocs/test/data"
 parsers_path="$HOME/pg_audit/pg_audit/parsers"
 
@@ -23,9 +23,9 @@ res_col="await"
 svc_col="svctm"
 
 # CPU Usage
-usr_col="%usr"
-sys_col="%sys"
-wait_col="%iowait"
+usr_col="usr"
+sys_col="sys"
+wait_col="iowait"
 
 ########## CONFIG ###########
 
@@ -46,7 +46,7 @@ EOF
 }
 
 read_params() {
-    while getopts 'cumlrwi' opt "$@"
+    while getopts 'cumlrwih' opt "$@"
     do
         case "$opt" in
 	    c)
