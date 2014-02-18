@@ -1,5 +1,11 @@
 #!/usr/bin/bash
 
+# $1 logs location
+# $2 location to store parsed files
+
+set -e
+set -x 
+
 cut -f1,15 pg_locks-*.log | sort | uniq -c | grep -v mode | awk {'print $3"\t"$1"\t"$5'} > AllLocks.tsv
 
 cat AllLocks.tsv | grep 'AccessShareLock' | awk {'print $1"\t"$2'} > AccessShareLock.tsv

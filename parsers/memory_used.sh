@@ -1,5 +1,8 @@
 #!/usr/bin/bash
 
+# $1 logs location
+# $2 location to store parsed files
+
 set -x
 set -e
 
