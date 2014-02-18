@@ -16,5 +16,5 @@ awk '{ tmp=($2)/(1024) ; printf$1"\t%0.2f\n", tmp }' mem_used.tsv > mem_used_MB.
 awk '{ tmp=($2)/(1024*1024) ; printf $1"\t%0.2f\n", tmp }' mem_used.tsv > mem_used_GB.tsv
 
 sed -i "1s/^/date\tmem_used\n&/" mem_used.tsv
-sed -i "1s/^/date\tmem_used(MB)\n&/" mem_used_MB.tsv
-sed -i "1s/^/date\tmem_used(GB)\n&/" mem_used_GB.tsv
+sed -i "1s/^/date\tmem_used_MB\n&/" mem_used_MB.tsv
+sed -i "1s/^/date\tmem_used_GB\n&/" mem_used_GB.tsv
