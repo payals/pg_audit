@@ -12,6 +12,10 @@ sh ~/bin/iostat.sh
 # Create vmstat.csv
 sh ~/bin/vmstat.sh
 
+# Get database size
+$PSQL_PATH -c "COPY(select datname as database, pg_database_size(datname) as size from pg_database) TO '$HOME/db_size.csv' WITH (FORMAT csv
+, DELIMITER ',' , HEADER true)" -U $PGUSER -d $PGDATABASE
+
 # Get security information
 $PSQL_PATH -c "COPY(select usename as username, usesuper as superuser, userepl
 as replication_allowed, case when passwd IS NOT NULL THEN 'yes' ELSE 'no' END as
