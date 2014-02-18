@@ -12,4 +12,9 @@ c=$(cat tempfile | sed -e "s/\s\{1,\}/ /g" | grep Cached | awk '{len=split($0, a
 
 cat tempfile | awk -v mf=$mf -v mt=$mt -v b=$b -v c=$c '{print $2"\t"($mt-$mf-$b-$c)}' > mem_used.tsv 
 
+awk '{ tmp=($2)/(1024) ; printf$1"\t%0.2f\n", tmp }' mem_used.tsv > mem_used_MB.tsv
+awk '{ tmp=($2)/(1024*1024) ; printf $1"\t%0.2f\n", tmp }' mem_used.tsv > mem_used_GB.tsv
+
 sed -i "1s/^/date\tmem_used\n&/" mem_used.tsv
+sed -i "1s/^/date\tmem_used(MB)\n&/" mem_used_MB.tsv
+sed -i "1s/^/date\tmem_used(GB)\n&/" mem_used_GB.tsv
