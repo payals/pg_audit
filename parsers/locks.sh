@@ -31,3 +31,6 @@ cut -f1,15,16 pg_locks-*.log | grep -v mode | grep RowExclusiveLock | sort | uni
 
 join -a1 -a2 -1 1 -2 1 -o 0 1.2 2.2 -e "0" ASLTemp.tsv SLTemp.tsv | awk {'print $1"\t"$2"\t"$3'} > SharedWaiting.tsv
 join -a1 -a2 -1 1 -2 1 -o 0 1.2 2.2 -e "0" RELTemp.tsv ELTemp.tsv | awk {'print $1"\t"$2"\t"$3'} > ExclusiveWaiting.tsv
+
+sed -i '1s/^/date\taccessShareLock\tshareLock\n&/' SharedWaiting.tsv
+sed -i '1s/^/date\trowExclusiveLock\texclusiveLock\n&/' ExclusiveWaiting.tsv
