@@ -3,7 +3,7 @@ pg_audit
 
 This is a set of scripts that parse and graph system_monitoring logs. 
 
-Right now it only has the capability to create line graphs of a day's worth og logs. The following graphs are available as of now:
+Right now it only has the capability to create line graphs of a day's worth of logs. The following graphs are available as of now:
 
 1. Memory Used
 2. CPU Usage
@@ -12,13 +12,14 @@ Right now it only has the capability to create line graphs of a day's worth og l
 5. Response and service times
 6. Total connection to postgres
 7. Locks:
+
       => Locks by type
       => Locks waiting
 
 Installing:
 ===========
 
-git clone https://github.com/payals/pg_audit
+git clone https://github.com/payals/pg_audit.git
 
 Usage:
 ======
