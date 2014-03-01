@@ -1,7 +1,7 @@
 # Global configuration, log directory
-PSQL_PATH=/opt/pgsql/bin/psql
-PGUSER=postgres
-PGDATABASE=flpg
+PSQL_PATH=$1
+PGUSER=$2
+PGDATABASE=$3
 
 set -e
 set -x
