@@ -1,6 +1,6 @@
 # Global configuration, log directory
 PSQL_PATH=/opt/pgsql/bin/psql
-PGUSER=payal
+PGUSER=postgres
 PGDATABASE=flpg
 
 set -e
