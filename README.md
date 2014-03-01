@@ -1,4 +1,4 @@
-pg_audit
+pg_viz
 ========
 
 This is a set of scripts that parse and graph system_monitoring logs. 
